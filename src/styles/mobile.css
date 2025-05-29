@@ -1,0 +1,48 @@
+
+/* Mobile-specific styles for Capacitor app */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text selection */
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Allow selection for input fields */
+  input, textarea {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* Improve scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+
+  /* Safe area for notched devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Status bar overlay fix */
+.capacitor-app {
+  padding-top: var(--ion-safe-area-top, 0px);
+}
