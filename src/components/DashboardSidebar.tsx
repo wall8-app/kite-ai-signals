@@ -1,5 +1,5 @@
 
-import { TrendingUp, PieChart, Bell, Lightbulb, Settings, X } from "lucide-react";
+import { TrendingUp, PieChart, Bell, Lightbulb, Settings, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface DashboardSidebarProps {
@@ -10,22 +10,25 @@ interface DashboardSidebarProps {
 
 export const DashboardSidebar = ({ activeTab, setActiveTab, setSidebarOpen }: DashboardSidebarProps) => {
   const menuItems = [
-    { id: "portfolio", label: "Portfolio", icon: PieChart },
-    { id: "alerts", label: "Alerts", icon: Bell },
-    { id: "insights", label: "Insights", icon: Lightbulb },
-    { id: "settings", label: "Settings", icon: Settings },
+    { id: "portfolio", label: "Portfolio", icon: PieChart, description: "Overview & analytics" },
+    { id: "alerts", label: "Alerts", icon: Bell, description: "Trading notifications" },
+    { id: "insights", label: "Insights", icon: Lightbulb, description: "AI-powered analysis" },
+    { id: "settings", label: "Settings", icon: Settings, description: "Account & preferences" },
   ];
 
   return (
-    <div className="h-full bg-white border-r border-gray-200 flex flex-col">
+    <div className="h-full bg-white border-r border-slate-200 flex flex-col shadow-sm">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200">
+      <div className="p-6 border-b border-slate-200">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-white" />
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+              <TrendingUp className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">TradePulse</span>
+            <div>
+              <h1 className="text-xl font-bold text-slate-900">TradePulse</h1>
+              <p className="text-xs text-slate-600 -mt-1">AI-powered trading</p>
+            </div>
           </div>
           <Button
             variant="ghost"
@@ -35,6 +38,26 @@ export const DashboardSidebar = ({ activeTab, setActiveTab, setSidebarOpen }: Da
           >
             <X className="w-4 h-4" />
           </Button>
+        </div>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="p-6 border-b border-slate-200">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold text-slate-900 text-sm">Market Status</h3>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          </div>
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-600">NIFTY 50</span>
+              <span className="text-green-600 font-medium">+0.83%</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-slate-600">SENSEX</span>
+              <span className="text-green-600 font-medium">+1.12%</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -51,15 +74,18 @@ export const DashboardSidebar = ({ activeTab, setActiveTab, setSidebarOpen }: Da
                     setSidebarOpen(false);
                   }}
                   className={`
-                    w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left transition-colors
+                    w-full flex items-start space-x-3 px-4 py-3 rounded-xl text-left transition-all duration-200
                     ${activeTab === item.id 
-                      ? 'bg-blue-50 text-blue-700 border border-blue-200' 
-                      : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-blue-50 text-blue-700 border border-blue-200 shadow-sm' 
+                      : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                     }
                   `}
                 >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
+                  <Icon className="w-5 h-5 mt-0.5" />
+                  <div>
+                    <div className="font-medium">{item.label}</div>
+                    <div className="text-xs text-slate-500 mt-0.5">{item.description}</div>
+                  </div>
                 </button>
               </li>
             );
@@ -67,12 +93,15 @@ export const DashboardSidebar = ({ activeTab, setActiveTab, setSidebarOpen }: Da
         </ul>
       </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
-          <h4 className="font-semibold text-gray-900 mb-1">Upgrade to Premium</h4>
-          <p className="text-sm text-gray-600 mb-3">Unlock unlimited alerts and advanced analytics</p>
-          <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+      {/* Upgrade Section */}
+      <div className="p-4 border-t border-slate-200">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-4 text-white">
+          <div className="flex items-center space-x-2 mb-2">
+            <Zap className="w-4 h-4" />
+            <h4 className="font-semibold text-sm">Upgrade to Pro</h4>
+          </div>
+          <p className="text-xs text-blue-100 mb-3">Unlock unlimited alerts and advanced analytics</p>
+          <Button size="sm" className="w-full bg-white text-blue-600 hover:bg-blue-50 font-medium">
             Upgrade Now
           </Button>
         </div>
