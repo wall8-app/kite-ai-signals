@@ -1,7 +1,6 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, TrendingDown, DollarSign, Shield, Plus, Activity, AlertTriangle } from "lucide-react";
+import { TrendingUp, TrendingDown, DollarSign, Shield, Plus, Activity, AlertTriangle, BarChart3 } from "lucide-react";
 
 export const PortfolioSummary = () => {
   const portfolioData = {
@@ -116,7 +115,7 @@ export const PortfolioSummary = () => {
         <Card className="lg:col-span-2 border-0 shadow-lg">
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center space-x-2">
-              <PieChart className="w-5 h-5 text-blue-600" />
+              <BarChart3 className="w-5 h-5 text-blue-600" />
               <span>Asset Allocation</span>
             </CardTitle>
           </CardHeader>
